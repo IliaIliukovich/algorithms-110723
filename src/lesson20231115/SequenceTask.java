@@ -3,7 +3,7 @@ package lesson20231115;
 public class SequenceTask {
 
     /*
-    Решить задачи через рекурсию, и далее оптимизовать алгоритм одним из
+    Решить задачу через рекурсию, и далее оптимизовать алгоритм одним из
     методов динамического программирования:
 
 Вычислить n-й член последовательности, заданной формулами:
@@ -14,23 +14,23 @@ sequence(0) = sequence(1) = 1.
 1 1 2 0 3 1 2 -2
 
 n = 0  ---> 1 1 (base condition)
-n = 1 a(2) = a(1) + a(0) = 1 + 1 = 2
-	  a(3) = a(1) - a(0) = 1 - 1 = 0
-n = 2 a(4) = a(2) + a(1) = 2 + 1 = 3
-	  a(5) = a(2) - a(1) = 2 - 1 = 1
-n = 3 a(6) = a(3) + a(2) = 0 + 2 = 2
-      a(7) = a(3) - a(2) = 0 - 2 = -2
+n = 1 sequence(2) = sequence(1) + sequence(0) = 1 + 1 = 2
+	  sequence(3) = sequence(1) - sequence(0) = 1 - 1 = 0
+n = 2 sequence(4) = sequence(2) + sequence(1) = 2 + 1 = 3
+	  sequence(5) = sequence(2) - sequence(1) = 2 - 1 = 1
+n = 3 sequence(6) = sequence(3) + sequence(2) = 0 + 2 = 2
+      sequence(7) = sequence(3) - sequence(2) = 0 - 2 = -2
      */
 
     public static void main(String[] args) {
-        System.out.println("Recursive: " + sequence(0) + " memo: " + sequenceMemo(0) + " tab: " + sequenceTab(0));
-        System.out.println("Recursive: " + sequence(1) + " memo: " + sequenceMemo(1) + " tab: " + sequenceTab(1));
-        System.out.println("Recursive: " + sequence(2) + " memo: " + sequenceMemo(2) + " tab: " + sequenceTab(2));
-        System.out.println("Recursive: " + sequence(3) + " memo: " + sequenceMemo(3) + " tab: " + sequenceTab(3));
-        System.out.println("Recursive: " + sequence(4) + " memo: " + sequenceMemo(4) + " tab: " + sequenceTab(4));
-        System.out.println("Recursive: " + sequence(5) + " memo: " + sequenceMemo(5) + " tab: " + sequenceTab(5));
-        System.out.println("Recursive: " + sequence(6) + " memo: " + sequenceMemo(6) + " tab: " + sequenceTab(6));
-        System.out.println("Recursive: " + sequence(7) + " memo: " + sequenceMemo(7) + " tab: " + sequenceTab(7));
+        System.out.println("Recursive: " + sequence(0) + ", memo: " + sequenceMemo(0) + ", tab: " + sequenceTab(0));
+        System.out.println("Recursive: " + sequence(1) + ", memo: " + sequenceMemo(1) + ", tab: " + sequenceTab(1));
+        System.out.println("Recursive: " + sequence(2) + ", memo: " + sequenceMemo(2) + ", tab: " + sequenceTab(2));
+        System.out.println("Recursive: " + sequence(3) + ", memo: " + sequenceMemo(3) + ", tab: " + sequenceTab(3));
+        System.out.println("Recursive: " + sequence(4) + ", memo: " + sequenceMemo(4) + ", tab: " + sequenceTab(4));
+        System.out.println("Recursive: " + sequence(5) + ", memo: " + sequenceMemo(5) + ", tab: " + sequenceTab(5));
+        System.out.println("Recursive: " + sequence(6) + ", memo: " + sequenceMemo(6) + ", tab: " + sequenceTab(6));
+        System.out.println("Recursive: " + sequence(7) + ", memo: " + sequenceMemo(7) + ", tab: " + sequenceTab(7));
     }
 
     public static int sequence(int m) {
