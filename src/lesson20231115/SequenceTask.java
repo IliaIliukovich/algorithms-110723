@@ -31,14 +31,6 @@ n = 3 a(6) = a(3) + a(2) = 0 + 2 = 2
         System.out.println("Recursive: " + sequence(5) + " memo: " + sequenceMemo(5) + " tab: " + sequenceTab(5));
         System.out.println("Recursive: " + sequence(6) + " memo: " + sequenceMemo(6) + " tab: " + sequenceTab(6));
         System.out.println("Recursive: " + sequence(7) + " memo: " + sequenceMemo(7) + " tab: " + sequenceTab(7));
-//        System.out.println(sequenceTabOptimized(0));
-//        System.out.println(sequenceTabOptimized(1));
-//        System.out.println(sequenceTabOptimized(2));
-//        System.out.println(sequenceTabOptimized(3));
-//        System.out.println(sequenceTabOptimized(4));
-//        System.out.println(sequenceTabOptimized(5));
-//        System.out.println(sequenceTabOptimized(6));
-//        System.out.println(sequenceTabOptimized(7));
     }
 
     public static int sequence(int m) {
