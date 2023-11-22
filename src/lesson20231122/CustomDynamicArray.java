@@ -64,7 +64,7 @@ public class CustomDynamicArray {
         array.printInnerStructure();
 //        array.add(50);
 //        array.printInnerStructure();
-        System.out.print(array);
+        System.out.println(array);
 
         array.addAt(2, 999);
         array.printInnerStructure();
@@ -80,7 +80,7 @@ public class CustomDynamicArray {
         for (int i = 0; i < count; i++) {
             result += data[i] + ", ";
         }
-        result += "]\n";
+        result += "]";
         return result;
     }
 }
