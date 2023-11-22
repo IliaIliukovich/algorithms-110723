@@ -48,6 +48,45 @@ public class CustomDynamicArray {
         size = size * 2;
     }
 
+    public void shrinkSize(){
+        if (count < size){
+            int[] newArray = new int[count];
+            for (int i = 0; i < count; i++) {
+                newArray[i] = data[i];
+            }
+            data = newArray;
+            size = count;
+        }
+    }
+
+    public void remove(){
+        data[--count] = 0; // make link to objects null for GC
+    }
+
+    public void removeAt(int index){
+
+    }
+
+    public void set(int index, int element){
+
+    }
+
+    public int get(int index){
+        return 0;
+    }
+
+    public void clear(){
+
+    }
+
+    public int contains(int element){
+        return 0;
+    }
+
+    public boolean isEmpty(){
+        return false;
+    }
+
 
 
 
@@ -62,11 +101,18 @@ public class CustomDynamicArray {
         array.printInnerStructure();
         array.add(40);
         array.printInnerStructure();
-//        array.add(50);
-//        array.printInnerStructure();
+        array.add(50);
+        array.printInnerStructure();
         System.out.println(array);
 
         array.addAt(2, 999);
+        array.printInnerStructure();
+
+        array.shrinkSize();
+        array.printInnerStructure();
+
+        array.remove();
+        System.out.println(array);
         array.printInnerStructure();
     }
 
