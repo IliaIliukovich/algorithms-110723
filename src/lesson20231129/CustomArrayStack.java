@@ -11,12 +11,12 @@ public class CustomArrayStack {
         this.count = 0;
     }
 
-    public void push(int element) {
+    public void push(int element) { // O(1)
         if (count >= data.length) throw new RuntimeException("Stack is full");
         data[count++] = element;
     }
 
-    public int pop(){
+    public int pop(){ // O(1)
         if (count == 0) throw new RuntimeException("Stack is empty");
         int result = data[--count];
         data[count] = 0;
