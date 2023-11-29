@@ -13,6 +13,7 @@ public class CustomArrayStack {
 
     public void push(int element) { // O(1)
         if (count >= data.length) throw new RuntimeException("Stack is full");
+//        if (count >= data.length) growSize(); // dymanic stack
         data[count++] = element;
     }
 
