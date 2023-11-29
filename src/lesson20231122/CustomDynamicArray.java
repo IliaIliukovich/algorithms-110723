@@ -156,16 +156,17 @@ public class CustomDynamicArray implements Iterable<Integer> {
     }
 
     @Override
-    public Iterator<Integer> iterator() { // TODO
-        return new Iterator<Integer>() {
+    public Iterator<Integer> iterator() {
+        return new Iterator<>() {
+            int currentIndex = 0;
             @Override
             public boolean hasNext() {
-                return false;
+                return currentIndex < count;
             }
-
             @Override
             public Integer next() {
-                return null;
+                if (!hasNext()) throw new RuntimeException("No more elements present");
+                return data[currentIndex++];
             }
         };
     }
