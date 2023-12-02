@@ -14,7 +14,7 @@ public class CustomArrayQueue {
         tail = -1;
     }
 
-    public void enqueue(int element){
+    public void enqueue(int element){ // O(1)
         if (count >= data.length) throw new RuntimeException("Queue is full");
         if (++tail == data.length) tail = 0;
         data[tail] = element;
@@ -22,7 +22,7 @@ public class CustomArrayQueue {
         count++;
     }
 
-    public int dequeue(){
+    public int dequeue(){ // O(1)
         if (count == 0) throw new RuntimeException("Queue is empty");
         int result = data[head];
         if (++head == data.length) head = 0;
@@ -31,6 +31,10 @@ public class CustomArrayQueue {
             tail = -1;
         }
         return result;
+    }
+
+    public int search(int element){ // TODO
+        return -1;
     }
 
     public static void main(String[] args) {

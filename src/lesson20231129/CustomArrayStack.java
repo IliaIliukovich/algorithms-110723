@@ -13,7 +13,7 @@ public class CustomArrayStack {
 
     public void push(int element) { // O(1)
         if (count >= data.length) throw new RuntimeException("Stack is full");
-//        if (count >= data.length) growSize(); // dymanic stack
+//        if (count >= data.length) growSize(); // dynamic stack
         data[count++] = element;
     }
 
@@ -37,7 +37,12 @@ public class CustomArrayStack {
         return count;
     }
 
-    public int search(int element){ // TODO
+    public int search(int element) { // O(n)
+        for (int i = count - 1; i >= 0; i--) {
+            if (data[i] == element) {
+                return count - i - 1;
+            }
+        }
         return -1;
     }
 
@@ -48,6 +53,10 @@ public class CustomArrayStack {
         stack.push(3);
         stack.push(4);
         stack.push(5);
+
+        System.out.println(stack.search(5));
+        System.out.println(stack.search(1));
+        System.out.println(stack.search(10));
         System.out.println("peek: " + stack.peek());
         System.out.println("size: " + stack.size());
         System.out.println(stack.pop());
