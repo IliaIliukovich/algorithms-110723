@@ -32,7 +32,18 @@ public class CustomLinkedList {
     }
 
     public void pushToIndex(String element, int index) {
-
+        if (index == 0) {
+            pushToHead(element);
+            return;
+        }
+        Node previous = first;
+        for (int i = 1; i <= index - 1; i++) {
+            if (previous == null) throw new RuntimeException("Index is out of bounds");
+            previous = previous.next;
+        }
+        if (previous == null) throw new RuntimeException("Index is out of bounds");
+        Node newNode = new Node(element, previous.next);
+        previous.next = newNode;
     }
 
     public String get(int index){
@@ -64,12 +75,15 @@ public class CustomLinkedList {
         linkedList.pushToTail("B");
         linkedList.pushToTail("C");
         linkedList.pushToTail("D");
-        linkedList.print();
+//        linkedList.print();
+//
+//        System.out.println(linkedList.get(0));
+//        System.out.println(linkedList.get(1));
+//        System.out.println(linkedList.get(2));
+//        System.out.println(linkedList.get(3));
 
-        System.out.println(linkedList.get(0));
-        System.out.println(linkedList.get(1));
-        System.out.println(linkedList.get(2));
-        System.out.println(linkedList.get(3));
+        linkedList.pushToIndex("E", 4);
+        linkedList.print();
     }
 
 
