@@ -8,7 +8,7 @@ public class SearchTree {
 
     private Node root;
 
-    static private class Node {
+    private static class Node {
         String key;
         Integer value;
 
@@ -24,7 +24,7 @@ public class SearchTree {
         }
     }
 
-    public Integer get(String key) { // O(log n) if tree is balanced // O(n) if tree is not balanced
+    public Integer get(String key) { // O(log n) if tree is balanced, O(n) if tree is not balanced
         Node current = root;
 
         while (current != null) {
@@ -40,7 +40,7 @@ public class SearchTree {
             root = add(root, key, value);
     }
 
-    private Node add(Node current, String key, Integer value) { // O(log n) if tree is balanced // O(n) if tree is not balanced
+    private Node add(Node current, String key, Integer value) { // O(log n) if tree is balanced, O(n) if tree is not balanced
         if (current == null) {
             current = new Node(key, value);
         } else {
@@ -80,7 +80,30 @@ public class SearchTree {
         return sortedData;
     }
 
-    public String getMaxKey(){
+    public String getMaxKey(){ // O(log n) if tree is balanced, O(n) if tree is not balanced
+        Node current = root;
+        while (current != null) {
+            if (current.right == null) return current.key;
+            current = current.right;
+        }
+        return null;
+    }
+
+    public String searchByValueBFS(Integer value) { // O(n)
+        if (root == null) return null;
+        Queue<Node> queue = new LinkedList<>();
+        queue.add(root);
+        Node current;
+        while (!queue.isEmpty()) {
+            current = queue.remove();
+            if (current.value.equals(value)) return current.key;
+            if (current.left != null) queue.add(current.left);
+            if (current.right != null) queue.add(current.right);
+        }
+        return null;
+    }
+
+    public String searchByValueDFS(Integer value) { // O(n) TODO
         return null;
     }
 
@@ -93,7 +116,8 @@ public class SearchTree {
         tree.add("D", 40);
         tree.add("G", 90);
 
-        // A B C D E
+        // Если добавлять ключи последовательно, несбалансированное дерево поиска выродится в связный список
+        // A -> B -> C -> D -> E
 
         System.out.println(tree.get("A"));
         System.out.println(tree.get("B"));
@@ -106,6 +130,10 @@ public class SearchTree {
 
         String[] sorted = sortWithTree(new String[]{"Hello", "World", "C", "D", "A"});
         System.out.println(Arrays.toString(sorted));
+
+        System.out.println("Max key = " + tree.getMaxKey());
+
+        System.out.println("searchByValueBFS: " + tree.searchByValueBFS(90));
     }
 
 }
