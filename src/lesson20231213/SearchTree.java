@@ -76,6 +76,7 @@ public class SearchTree {
         System.out.println(tree.get("B"));
         System.out.println(tree.get("C"));
         System.out.println(tree.get("D"));
+        System.out.println(tree.get("G"));
         System.out.println(tree.get("X"));
 
         System.out.println(tree.getAllKeys());
