@@ -11,6 +11,7 @@ public class SearchTree {
     private static class Node {
         String key;
         Integer value;
+        Integer height;
 
 //        List<Node> children;
         Node left;
@@ -21,6 +22,7 @@ public class SearchTree {
             this.value = value;
             this.left = null;
             this.right = null;
+            this.height = 1;
         }
     }
 
@@ -48,6 +50,8 @@ public class SearchTree {
             if (result == 0) current.value = value;
             else if (result < 0) current.left = add(current.left, key, value);
             else current.right = add(current.right, key, value);
+            current.height = 1 + Math.max((current.left == null) ? 0 : current.left.height,
+                    (current.right == null) ? 0 : current.right.height);
         }
         return current;
     }
@@ -103,8 +107,37 @@ public class SearchTree {
         return null;
     }
 
-    public String searchByValueDFS(Integer value) { // O(n) TODO
-        return null;
+    public String searchByValueDFS(Integer value) { // O(n)
+        return searchByValueDFS(value, root);
+    }
+
+    private String searchByValueDFS(Integer value, Node current) {
+        if (current == null) return null;
+        if (current.value.equals(value)) return current.key;
+        String result = searchByValueDFS(value, current.left);
+        if (result == null) result = searchByValueDFS(value, current.right);
+        return result;
+    }
+
+    public int treeHeight() { // O(n)
+        if (root == null) return 0;
+        Queue<Node> queue = new LinkedList<>();
+        queue.add(root);
+        int height = 0;
+        while (!queue.isEmpty()) {
+            int size = queue.size();
+            while (size-- != 0) {
+                Node current = queue.remove();
+                if (current.left != null) queue.add(current.left);
+                if (current.right != null) queue.add(current.right);
+            }
+            height++;
+        }
+        return height;
+    }
+
+    public int treeHeight2() { // O(1)
+        return (root == null) ? 0 : root.height;
     }
 
 
@@ -134,6 +167,9 @@ public class SearchTree {
         System.out.println("Max key = " + tree.getMaxKey());
 
         System.out.println("searchByValueBFS: " + tree.searchByValueBFS(90));
+        System.out.println("searchByValueDFS, inorder: " + tree.searchByValueDFS(90));
+        System.out.println("treeHeight: " + tree.treeHeight());
+        System.out.println("treeHeight2: " + tree.treeHeight2());
     }
 
 }
