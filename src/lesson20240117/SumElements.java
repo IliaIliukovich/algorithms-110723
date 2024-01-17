@@ -23,12 +23,20 @@ public class SumElements {
     // (4 + 14), (7 + 21)  --- 2 operation in time --- 2 threads
     // (28 + 28)  --- 3 operation in time --- 1 thread
     public static int sumDivideAndConquer(int[] data) {
-        return 0;
+        if (data == null || data.length == 0) {
+            return 0;
+        }
+        return divideAndConquerSum(data, 0, data.length - 1);
     }
-
-
-
-
-
+    private static int divideAndConquerSum(int[] arr, int left, int right) {
+        if (left == right) {
+            return arr[left];
+        } else {
+            int mid = (left + right) / 2;
+            int sumLeft = divideAndConquerSum(arr, left, mid);
+            int sumRight = divideAndConquerSum(arr, mid + 1, right);
+            return sumLeft + sumRight;
+        }
+    }
 
 }
