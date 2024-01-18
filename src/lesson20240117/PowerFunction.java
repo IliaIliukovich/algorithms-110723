@@ -6,13 +6,13 @@ public class PowerFunction {
     // x^a
     public static void main(String[] args) {
         int x = 2;
-        int a = 10;
+        int a = 8;
         System.out.println(powerInLoop(x, a));
         System.out.println(powerDivideAndConquer(x, a));
 
     }
 
-        // x * x * x * x * x * x * x * x   --- 7 operations
+    // x * x * x * x * x * x * x * x   --- 7 operations
     public static int powerInLoop(int x, int a) { // O(a)
         int result = 1;
         for (int i = 0; i < a; i++) {
@@ -20,11 +20,9 @@ public class PowerFunction {
         }
         return result;
     }
-        // x * x * x * x * x * x * x * x
-        // (x * x * x * x) * (x * x * x * x) z * z
-        // ((x * x) * (x * x)) * ((x * x) * (x * x))  z = y * y
-        // y = x * x  -- 3 operations
-
+    // (x * x * x * x) * (x * x * x * x)  result = z * z -- 3 operations
+    // (x * x) * (x * x)  z = y * y
+    // (x * x)  y = x * x
     public static int powerDivideAndConquer(int x, int a) { // O(log n)
         if (a == 1) return x;
         if (a % 2 == 0) {
