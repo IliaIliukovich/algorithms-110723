@@ -2,7 +2,7 @@ package lesson20240117;
 
 import java.util.Arrays;
 
-public class FindKthElement {
+public class FindKthElementInTwoArrays {
 
     public static void main(String[] args) {
         int[] array1 = {100, 112, 256, 349, 770};
