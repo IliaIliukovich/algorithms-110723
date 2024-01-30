@@ -1,7 +1,6 @@
 package lesson20240124;
 
 import java.util.Arrays;
-import java.util.Collections;
 import java.util.Comparator;
 import java.util.Random;
 
@@ -17,10 +16,12 @@ public class Tasks {
 
         System.out.println(isSorted(data));
 
-        shuffle(data);
+        shuffleByRandomSorting(data);
 //        Collections.shuffle();
-        System.out.println(Arrays.toString(data));
         System.out.println(isSorted(data));
+        System.out.println(Arrays.toString(data));
+        shuffle(data);
+        System.out.println(Arrays.toString(data));
     }
 
     public static boolean isSorted(int[] data) {  // O(n)
@@ -30,7 +31,7 @@ public class Tasks {
         return true;
     }
 
-    public static void shuffle(int[] data) { // O(n log n)
+    public static void shuffleByRandomSorting(int[] data) { // O(n log n)
         Data[] tmpData = new Data[data.length];
         Random random = new Random();
         for (int i = 0; i < data.length; i++) {
@@ -39,6 +40,22 @@ public class Tasks {
         Arrays.sort(tmpData, Comparator.comparingInt(d -> d.valueForSort ));
         for (int i = 0; i < data.length; i++) {
             data[i] = tmpData[i].value;
+        }
+    }
+
+    public static void shuffle(int[] data) {  // O(n)
+        Random random = new Random();
+        for (int i = 1; i < data.length; i++) {
+            swap(data, i, random.nextInt(i +  1));
+//            swap(data, i, random.nextInt(data.length)); // this solution will not give uniformly distribution
+        }
+    }
+
+    private static void swap(int[] array, int i, int j) {
+        if (i != j) {
+            int tmp = array[i];
+            array[i] = array[j];
+            array[j] = tmp;
         }
     }
 
