@@ -37,7 +37,7 @@ public class QuickSort {
         quickSort(data, pivotIndex + 1, end);
     }
 
-    private static int partition(int[] data, int start, int end){
+    public static int partition(int[] data, int start, int end){
         int pivot = data[start];
         int i = start;
         int j = end + 1;
