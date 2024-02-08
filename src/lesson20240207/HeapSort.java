@@ -4,6 +4,9 @@ import java.util.Arrays;
 
 public class HeapSort {
 
+    // in-place
+    // unstable
+    // O(N log N)
     public static void main(String[] args) {
         Integer[] data = {3, 1, 2, 5, 4};
         heapSort(data);
