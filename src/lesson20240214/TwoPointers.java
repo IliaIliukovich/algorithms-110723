@@ -1,14 +1,21 @@
 package lesson20240214;
 
+import java.util.Arrays;
+
 public class TwoPointers {
 
-    // Найти два элемента из упорядоченного массива, сумма которых равна заданному числу givenSum
 
     public static void main(String[] args) {
+        // Task: Найти два элемента из упорядоченного массива, сумма которых равна заданному числу givenSum
         int[] sortedData = {1, 2, 2, 4, 5, 6, 8, 8, 11, 12};
         int givenSum = 13;
         bruteForceAlg(sortedData, givenSum);
         twoPointersAlg(sortedData, givenSum);
+
+        // Task: Возвести в квадрат отсортированный массив.
+        // Результирующий массив тоже должен быть отсортирован
+        int[] input = new int[] {-5, -1, 0, 1, 3, 6, 8};
+        generateOrderedSquareSequence(input);
     }
 
     public static void bruteForceAlg(int[] sortedData, int givenSum) {
@@ -39,6 +46,26 @@ public class TwoPointers {
             }
         }
         System.out.println("Solution not found");
+    }
+
+    public static void generateOrderedSquareSequence(int[] input) {
+        int[] output = new int[input.length];
+        int left = 0;
+        int right = input.length - 1;
+        int k = input.length - 1;
+
+        while (left <= right){
+            if (input[left] * input[left] >= input[right] * input[right]){
+                output[k] = input[left] * input[left];
+                left++;
+            } else {
+                output[k] = input[right] * input[right];
+                right--;
+            }
+            k--;
+        }
+
+        System.out.println(Arrays.toString(output));
     }
 
 
